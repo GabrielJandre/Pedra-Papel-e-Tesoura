@@ -1,0 +1,1 @@
+    Esse é o Jogo do Pedra, Papel e Tesoura! :D
