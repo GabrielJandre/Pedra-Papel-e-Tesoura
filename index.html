@@ -9,9 +9,61 @@
             <p>Informe seu Nome:</p>
             <input type="text" /> 
             <p>Escolha uma Opção:</p>
-            <button style="padding: 10px 15px; margin: 10px;">Pedra</button>
-            <button style="padding: 10px 15px; margin: 10px;">Papel</button>
-            <button style="padding: 10px 15px; margin: 10px;">Tesoura</button>
+            <button id= "pedra"   style= "padding: 10px 15px; margin: 10px;"> Pedra   </button>
+            <button id= "papel"   style= "padding: 10px 15px; margin: 10px;"> Papel   </button>
+            <button id= "tesoura" style= "padding: 10px 15px; margin: 10px;"> Tesoura </button>
+            <p id = "resultado"></p>
+
+            <script>
+                function geraJogadaAleatoria() 
+                {
+                    const opcoes = ['pedra','papel', 'tesoura']
+                    const opcaoAleatoria = Math.floor(Math.random() * 3)
+                    return opcoes [opcaoAleatoria]
+                }
+
+                function jogar(jogadaDoJogador)
+                {
+                    const jogadaDoComputador = geraJogadaAleatoria()
+                    let resultado = ''
+                    if(jogadaDoJogador === jogadaDoComputador)
+                    {
+                        resultado = 'Empate!'
+                    }
+                    else if(
+                        (jogadaDoJogador === 'pedra' && jogadaDoComputador === 'tesoura') ||
+                        (jogadaDoJogador === 'tesoura' && jogadaDoComputador === 'papel') ||
+                        (jogadaDoJogador === 'papel' && jogadaDoComputador === 'pedra')
+                        )
+                    {
+                        resultado = `VOCÊ VENCEU!! Jogador: ${jogadaDoJogador}; Computador: ${jogadaDoComputador}`
+                    }
+                    else
+                    {
+                        resultado = 'VOCÊ PERDEU!!'
+                    }
+
+                    document.getElementById('resultado').innerText = resultado
+                }
+
+                const pedra = document.getElementById('pedra');
+                pedra.addEventListener('click', function()
+                {
+                    jogar('pedra')
+                })
+                const papel = document.getElementById('papel');
+                papel.addEventListener('click', function()
+                {
+                    jogar('papel')
+                })
+                const tesoura = document.getElementById('tesoura');
+                tesoura.addEventListener('click', function()
+                {
+                    jogar('tesoura')
+                })
+
+
+            </script>
             
         </body>
     
